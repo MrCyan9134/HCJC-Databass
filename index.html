@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HCJC — Hand Cricket Justice Council</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0B0F19;
+      --bg-card: #151C2C;
+      --bg-card-hover: #1E273A;
+      --accent-blue: #2563EB;
+      --accent-light: #60A5FA;
+      --accent-cyan: #38BDF8;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-color: #1E293B;
+      --danger: #EF4444;
+      --warning: #F59E0B;
+      --card-radius: 12px;
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 80px;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+    /* Header */
+    header {
+      background: linear-gradient(180deg, rgba(37, 99, 235, 0.15) 0%, rgba(11, 15, 25, 0) 100%), var(--bg-main);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .header-content { display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem; color: #FFF;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .brand-text h1 { font-size: 1.2rem; font-weight: 800; line-height: 1.1; }
+    .brand-text p { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+
+    .btn-refresh {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 6px;
+      transition: var(--transition);
+    }
+    .btn-refresh:hover { background: var(--accent-blue); border-color: var(--accent-blue); }
+    .btn-refresh svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    /* Nav Navigation */
+    .desktop-nav { display: none; gap: 4px; background: rgba(21, 28, 44, 0.6); padding: 4px; border-radius: 10px; border: 1px solid var(--border-color); }
+    @media (min-width: 850px) { .desktop-nav { display: flex; } body { padding-bottom: 40px; } }
+    .nav-btn {
+      background: transparent; border: none; color: var(--text-muted);
+      padding: 8px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: var(--transition);
+    }
+    .nav-btn:hover { color: var(--text-main); }
+    .nav-btn.active { background: var(--accent-blue); color: #FFF; }
+
+    /* Mobile Bottom Navigation */
+    .mobile-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid var(--border-color);
+      display: flex; justify-content: space-around;
+      padding: 8px 4px; z-index: 1000;
+      backdrop-filter: blur(12px);
+    }
+    @media (min-width: 850px) { .mobile-nav { display: none; } }
+    .mobile-nav-btn {
+      background: none; border: none; color: var(--text-muted);
+      display: flex; flex-direction: column; align-items: center;
+      font-size: 0.65rem; font-weight: 600; gap: 4px; cursor: pointer;
+      width: 16%; padding: 4px 0; border-radius: 6px; transition: var(--transition);
+    }
+    .mobile-nav-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .mobile-nav-btn.active { color: var(--accent-cyan); }
+
+    /* Alert Banner */
+    .alert-banner {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--warning);
+      color: var(--warning);
+      padding: 10px 16px; border-radius: 8px; margin-top: 16px;
+      font-size: 0.85rem; font-weight: 500; display: none;
+      align-items: center; gap: 8px;
+    }
+
+    /* Page Sections */
+    main { padding: 24px 0; }
+    .page-section { display: none; animation: fadeIn 0.25s ease-in-out; }
+    .page-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Hero */
+    .hero {
+      text-align: center; padding: 28px 16px;
+      background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+      border-radius: var(--card-radius); margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .hero h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; color: #FFF; }
+    .hero p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px; }
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-cyan); padding: 4px 14px; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 1.15rem; font-weight: 700; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px; color: var(--text-main);
+      border-left: 4px solid var(--accent-blue); padding-left: 10px;
+    }
+
+    /* Grid Access */
+    .quick-access-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px; margin-bottom: 24px;
+    }
+    @media (min-width: 600px) { .quick-access-grid { grid-template-columns: repeat(5, 1fr); } }
+    .quick-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--card-radius); padding: 16px; text-align: center;
+      cursor: pointer; transition: var(--transition);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .quick-card:hover { background: var(--bg-card-hover); border-color: var(--accent-blue); transform: translateY(-2px); }
+
+    /* Tables & Cards */
+    .data-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--card-radius); padding: 18px; margin-bottom: 20px;
+    }
+    .data-table-container { width: 100%; overflow-x: auto; border-radius: 8px; border: 1px solid var(--border-color); }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+    th { background: #111726; color: var(--text-muted); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+    td { padding: 10px 12px; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--bg-card-hover); cursor: pointer; }
+
+    .rank-cell { font-weight: 700; color: var(--text-muted); }
+    .top-1 { color: #FBBF24; }
+    .top-2 { color: #94A3B8; }
+    .top-3 { color: #D97706; }
+
+    /* Search Input */
+    .search-box { position: relative; margin-bottom: 16px; }
+    .search-input {
+      width: 100%; background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: 8px; padding: 10px 14px 10px 38px; color: var(--text-main);
+      font-size: 0.88rem; outline: none; transition: var(--transition);
+    }
+    .search-input:focus { border-color: var(--accent-blue); }
+    .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; stroke: var(--text-muted); fill: none; }
+
+    /* Key-Value Lists */
+    .kv-list { display: flex; flex-direction: column; gap: 8px; }
+    .kv-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: rgba(255, 255, 255, 0.02); border-radius: 6px; border: 1px solid var(--border-color); }
+    .kv-label { color: var(--text-muted); font-size: 0.82rem; }
+    .kv-value { font-weight: 600; color: var(--text-main); font-size: 0.85rem; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.8); display: none;
+      justify-content: center; align-items: center; z-index: 2000; padding: 16px;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--card-radius); width: 100%; max-width: 420px;
+      padding: 20px; position: relative;
+    }
+    .modal-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 14px; }
+    .stat-box { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; text-align: center; }
+    .stat-value { font-size: 1.2rem; font-weight: 700; color: var(--accent-light); }
+    .stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-content">
+      <div class="brand">
+        <div class="brand-icon">H</div>
+        <div class="brand-text">
+          <h1>HCJC</h1>
+          <p>Hand Cricket Justice Council</p>
+        </div>
+      </div>
+
+      <nav class="desktop-nav">
+        <button class="nav-btn active" onclick="switchTab('home')">Home</button>
+        <button class="nav-btn" onclick="switchTab('players')">Players</button>
+        <button class="nav-btn" onclick="switchTab('class-cup')">Class Cup</button>
+        <button class="nav-btn" onclick="switchTab('champions-trophy')">Champions Trophy</button>
+        <button class="nav-btn" onclick="switchTab('elite-qualifier')">Elite Qualifier</button>
+        <button class="nav-btn" onclick="switchTab('records')">Records</button>
+      </nav>
+
+      <button class="btn-refresh" onclick="fetchData(true)">
+        <svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        <span>Refresh</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="alert-banner" class="alert-banner">
+      ⚠️ <span id="alert-msg">Unable to update data. Showing last available data.</span>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- HOME PAGE -->
+    <section id="page-home" class="page-section active">
+      <div class="hero">
+        <h2>HCJC Statistics Database</h2>
+        <p>Official Tournament Records & Career Stats</p>
+        <div class="badge-pill">
+          👥 <span id="registered-players-count">Loading players...</span>
+        </div>
+      </div>
+
+      <div class="section-title">Quick Access</div>
+      <div class="quick-access-grid">
+        <div class="quick-card" onclick="switchTab('class-cup')">
+          <div style="font-size:1.5rem">🏆</div>
+          <div style="font-size:0.85rem; font-weight:700">Class Cup</div>
+        </div>
+        <div class="quick-card" onclick="switchTab('champions-trophy')">
+          <div style="font-size:1.5rem">🏆</div>
+          <div style="font-size:0.85rem; font-weight:700">Champions Trophy</div>
+        </div>
+        <div class="quick-card" onclick="switchTab('elite-qualifier')">
+          <div style="font-size:1.5rem">🎯</div>
+          <div style="font-size:0.85rem; font-weight:700">Elite Qualifier</div>
+        </div>
+        <div class="quick-card" onclick="switchTab('players')">
+          <div style="font-size:1.5rem">👤</div>
+          <div style="font-size:0.85rem; font-weight:700">Player Stats</div>
+        </div>
+        <div class="quick-card" onclick="switchTab('records')">
+          <div style="font-size:1.5rem">📊</div>
+          <div style="font-size:0.85rem; font-weight:700">Records</div>
+        </div>
+      </div>
+
+      <div class="data-card" style="text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+        ℹ️ Statistics are updated directly from the HCJC GitHub database in real-time.
+      </div>
+    </section>
+
+    <!-- PLAYER STATS -->
+    <section id="page-players" class="page-section">
+      <div class="section-title">Career Player Leaderboard</div>
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="player-search" class="search-input" placeholder="Search player name..." oninput="renderPlayers()">
+      </div>
+      <div class="data-table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>Matches</th>
+              <th>Runs</th>
+              <th>50s</th>
+              <th>100s</th>
+              <th>Ducks</th>
+            </tr>
+          </thead>
+          <tbody id="player-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CLASS CUP -->
+    <section id="page-class-cup" class="page-section">
+      <div class="section-title">Class Cup Statistics</div>
+      <div class="data-card">
+        <h3 style="margin-bottom:10px; color:var(--accent-light);">1. Class Cup Overall Stats</h3>
+        <div id="class-cup-overall" class="kv-list">Loading...</div>
+      </div>
+      <div class="data-card">
+        <h3 style="margin-bottom:10px; color:var(--accent-light);">2. Class Cup Overall Records</h3>
+        <div id="class-cup-records" class="kv-list">Loading...</div>
+      </div>
+      <div class="data-card">
+        <h3 style="margin-bottom:10px; color:var(--accent-light);">3. Class Cup Single-Edition Records</h3>
+        <div id="class-cup-single-edition" class="kv-list">Loading...</div>
+      </div>
+      <div class="data-card">
+        <h3 style="margin-bottom:10px; color:var(--accent-light);">4. Class Cup Points Table</h3>
+        <div id="class-cup-points-table" class="data-table-container">Loading...</div>
+      </div>
+      <div class="data-card">
+        <h3 style="margin-bottom:10px; color:var(--accent-light);">5. Class Cup Tournament Stats</h3>
+        <div id="class-cup-tournaments">Loading...</div>
+      </div>
+    </section>
+
+    <!-- CHAMPIONS TROPHY -->
+    <section id="page-champions-trophy" class="page-section">
+      <div class="section-title">Champions Trophy Statistics</div>
+      <div id="champions-trophy-content" class="data-card">Loading...</div>
+    </section>
+
+    <!-- ELITE QUALIFIER -->
+    <section id="page-elite-qualifier" class="page-section">
+      <div class="section-title">Elite Qualifier Statistics</div>
+      <div id="elite-qualifier-content" class="data-card">Loading...</div>
+    </section>
+
+    <!-- RECORDS -->
+    <section id="page-records" class="page-section">
+      <div class="section-title">HCJC All-Time Records</div>
+      <div id="records-content" class="data-card">Loading...</div>
+    </section>
+
+  </main>
+
+  <!-- Player Modal -->
+  <div id="player-modal" class="modal-overlay" onclick="closePlayerModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closePlayerModal()">&times;</button>
+      <div style="text-align: center; margin-bottom: 16px;">
+        <div id="modal-avatar" style="width:50px; height:50px; background:linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.3rem; margin:0 auto 8px auto;">P</div>
+        <h2 id="modal-player-name" style="font-size: 1.3rem;">Player Name</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-value" id="modal-matches">0</div><div class="stat-label">Matches</div></div>
+        <div class="stat-box"><div class="stat-value" id="modal-runs">0</div><div class="stat-label">Career Runs</div></div>
+        <div class="stat-box"><div class="stat-value" id="modal-50s">0</div><div class="stat-label">Career 50s</div></div>
+        <div class="stat-box"><div class="stat-value" id="modal-100s">0</div><div class="stat-label">Career 100s</div></div>
+        <div class="stat-box" style="grid-column: span 2;"><div class="stat-value" id="modal-ducks" style="color:var(--danger)">0</div><div class="stat-label">Career Ducks</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav">
+    <button class="mobile-nav-btn active" id="mnav-home" onclick="switchTab('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg><span>Home</span></button>
+    <button class="mobile-nav-btn" id="mnav-players" onclick="switchTab('players')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>Players</span></button>
+    <button class="mobile-nav-btn" id="mnav-class-cup" onclick="switchTab('class-cup')"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg><span>Class Cup</span></button>
+    <button class="mobile-nav-btn" id="mnav-champions-trophy" onclick="switchTab('champions-trophy')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle></svg><span>Champ Cup</span></button>
+    <button class="mobile-nav-btn" id="mnav-elite-qualifier" onclick="switchTab('elite-qualifier')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg><span>Elite Qual</span></button>
+    <button class="mobile-nav-btn" id="mnav-records" onclick="switchTab('records')"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Records</span></button>
+  </nav>
+
+  <script>
+    const DATA_URL = 'https://raw.githubusercontent.com/MrCyan9134/HCJC-Databass/refs/heads/main/hcjc.json';
+    let appData = null;
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.mobile-nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      const sel = document.getElementById(`page-${tabId}`);
+      if (sel) sel.classList.add('active');
+
+      const dBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (dBtn) dBtn.classList.add('active');
+
+      const mBtn = document.getElementById(`mnav-${tabId}`);
+      if (mBtn) mBtn.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    async function fetchData(isManual = false) {
+      document.getElementById('alert-banner').style.display = 'none';
+      try {
+        const cacheBust = `${DATA_URL}?t=${Date.now()}`;
+        const res = await fetch(cacheBust, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Fetch failed');
+
+        appData = await res.json();
+        localStorage.setItem('hcjc_cached_data', JSON.stringify(appData));
+        renderAll();
+      } catch (err) {
+        console.warn('Network error, checking offline cache...');
+        const cached = localStorage.getItem('hcjc
