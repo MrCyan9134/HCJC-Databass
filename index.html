@@ -362,57 +362,221 @@
         <div id="modal-avatar" style="width:50px; height:50px; background:linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.3rem; margin:0 auto 8px auto;">P</div>
         <h2 id="modal-player-name" style="font-size: 1.3rem;">Player Name</h2>
       </div>
-      <div class="stats-grid">
-        <div class="stat-box"><div class="stat-value" id="modal-matches">0</div><div class="stat-label">Matches</div></div>
-        <div class="stat-box"><div class="stat-value" id="modal-runs">0</div><div class="stat-label">Career Runs</div></div>
-        <div class="stat-box"><div class="stat-value" id="modal-50s">0</div><div class="stat-label">Career 50s</div></div>
-        <div class="stat-box"><div class="stat-value" id="modal-100s">0</div><div class="stat-label">Career 100s</div></div>
-        <div class="stat-box" style="grid-column: span 2;"><div class="stat-value" id="modal-ducks" style="color:var(--danger)">0</div><div class="stat-label">Career Ducks</div></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HCJC Cricket Database</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #0B0F19; color: #F3F4F6; font-family: system-ui, -apple-system, sans-serif; }
+    .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .active-tab { background-color: #2563EB; color: #FFFFFF; }
+  </style>
+</head>
+<body class="pb-20 md:pb-6">
+
+  <!-- Header -->
+  <header class="glass-card sticky top-0 z-40 px-4 py-3 border-b border-gray-800 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <i class="fa-solid fa-trophy text-yellow-500 text-2xl"></i>
+      <div>
+        <h1 class="font-bold text-lg leading-none">HCJC Stats</h1>
+        <span class="text-xs text-gray-400">Official Database</span>
       </div>
+    </div>
+    <button onclick="fetchData()" class="p-2 rounded-lg glass-card hover:bg-gray-800 text-blue-400">
+      <i class="fa-solid fa-arrows-rotate" id="refresh-icon"></i>
+    </button>
+  </header>
+
+  <!-- Navigation (Desktop & Top) -->
+  <nav class="max-w-4xl mx-auto p-4 hidden md:flex space-x-2">
+    <button onclick="switchTab('leaderboard')" id="tab-leaderboard" class="tab-btn active-tab px-4 py-2 rounded-xl text-sm font-semibold flex items-center space-x-2">
+      <i class="fa-solid fa-ranking-star"></i><span>Leaderboard</span>
+    </button>
+    <button onclick="switchTab('tournaments')" id="tab-tournaments" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold flex items-center space-x-2 text-gray-400 hover:bg-gray-800">
+      <i class="fa-solid fa-sitemap"></i><span>Tournaments</span>
+    </button>
+    <button onclick="switchTab('records')" id="tab-records" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold flex items-center space-x-2 text-gray-400 hover:bg-gray-800">
+      <i class="fa-solid fa-award"></i><span>Records</span>
+    </button>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="max-w-4xl mx-auto p-4">
+    <!-- Loading Spinner -->
+    <div id="loader" class="text-center py-20">
+      <i class="fa-solid fa-spinner fa-spin text-4xl text-blue-500 mb-3"></i>
+      <p class="text-gray-400 text-sm">Fetching live stats from GitHub...</p>
+    </div>
+
+    <!-- View: Leaderboard -->
+    <section id="view-leaderboard" class="view-section hidden space-y-3"></section>
+
+    <!-- View: Tournaments -->
+    <section id="view-tournaments" class="view-section hidden space-y-6"></section>
+
+    <!-- View: Records -->
+    <section id="view-records" class="view-section hidden space-y-4"></section>
+  </main>
+
+  <!-- Player Profile Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-card max-w-sm w-full rounded-2xl p-5 space-y-4 relative border border-gray-700">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+      <div id="modal-content"></div>
     </div>
   </div>
 
-  <!-- Mobile Nav -->
-  <nav class="mobile-nav">
-    <button class="mobile-nav-btn active" id="mnav-home" onclick="switchTab('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg><span>Home</span></button>
-    <button class="mobile-nav-btn" id="mnav-players" onclick="switchTab('players')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>Players</span></button>
-    <button class="mobile-nav-btn" id="mnav-class-cup" onclick="switchTab('class-cup')"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path></svg><span>Class Cup</span></button>
-    <button class="mobile-nav-btn" id="mnav-champions-trophy" onclick="switchTab('champions-trophy')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle></svg><span>Champ Cup</span></button>
-    <button class="mobile-nav-btn" id="mnav-elite-qualifier" onclick="switchTab('elite-qualifier')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg><span>Elite Qual</span></button>
-    <button class="mobile-nav-btn" id="mnav-records" onclick="switchTab('records')"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Records</span></button>
-  </nav>
+  <!-- Bottom Nav (Mobile Only) -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 glass-card border-t border-gray-800 flex justify-around p-2 z-40">
+    <button onclick="switchTab('leaderboard')" id="mob-tab-leaderboard" class="flex flex-col items-center p-2 text-blue-500">
+      <i class="fa-solid fa-ranking-star text-lg"></i>
+      <span class="text-xs">Leaderboard</span>
+    </button>
+    <button onclick="switchTab('tournaments')" id="mob-tab-tournaments" class="flex flex-col items-center p-2 text-gray-400">
+      <i class="fa-solid fa-sitemap text-lg"></i>
+      <span class="text-xs">Tournaments</span>
+    </button>
+    <button onclick="switchTab('records')" id="mob-tab-records" class="flex flex-col items-center p-2 text-gray-400">
+      <i class="fa-solid fa-award text-lg"></i>
+      <span class="text-xs">Records</span>
+    </button>
+  </div>
 
   <script>
     const DATA_URL = 'https://raw.githubusercontent.com/MrCyan9134/HCJC-Databass/refs/heads/main/hcjc.json';
-    let appData = null;
+    let db = null;
 
-    function switchTab(tabId) {
-      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.mobile-nav-btn').forEach(btn => btn.classList.remove('active'));
+    async function fetchData() {
+      const icon = document.getElementById('refresh-icon');
+      if (icon) icon.classList.add('fa-spin');
+      document.getElementById('loader').classList.remove('hidden');
 
-      const sel = document.getElementById(`page-${tabId}`);
-      if (sel) sel.classList.add('active');
-
-      const dBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick').includes(tabId));
-      if (dBtn) dBtn.classList.add('active');
-
-      const mBtn = document.getElementById(`mnav-${tabId}`);
-      if (mBtn) mBtn.classList.add('active');
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      try {
+        const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
+        db = await response.json();
+        renderLeaderboard();
+        renderTournaments();
+        renderRecords();
+        document.getElementById('loader').classList.add('hidden');
+        document.getElementById('view-leaderboard').classList.remove('hidden');
+      } catch (err) {
+        document.getElementById('loader').innerHTML = `<p class="text-red-400">Failed to load data. Make sure hcjc.json is valid JSON!</p>`;
+      } finally {
+        if (icon) icon.classList.remove('fa-spin');
+      }
     }
 
-    async function fetchData(isManual = false) {
-      document.getElementById('alert-banner').style.display = 'none';
-      try {
-        const cacheBust = `${DATA_URL}?t=${Date.now()}`;
-        const res = await fetch(cacheBust, { cache: 'no-store' });
-        if (!res.ok) throw new Error('Fetch failed');
+    function switchTab(tabName) {
+      document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`view-${tabName}`).classList.remove('hidden');
 
-        appData = await res.json();
-        localStorage.setItem('hcjc_cached_data', JSON.stringify(appData));
-        renderAll();
-      } catch (err) {
-        console.warn('Network error, checking offline cache...');
-        const cached = localStorage.getItem('hcjc
+      // Desktop style
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active-tab', 'text-white');
+        btn.classList.add('text-gray-400');
+      });
+      const activeBtn = document.getElementById(`tab-${tabName}`);
+      if (activeBtn) activeBtn.classList.add('active-tab');
+
+      // Mobile style
+      ['leaderboard', 'tournaments', 'records'].forEach(t => {
+        const mobBtn = document.getElementById(`mob-tab-${t}`);
+        if (mobBtn) mobBtn.className = `flex flex-col items-center p-2 ${t === tabName ? 'text-blue-500' : 'text-gray-400'}`;
+      });
+    }
+
+    function renderLeaderboard() {
+      const container = document.getElementById('view-leaderboard');
+      if (!db || !db["Career Total Stats"]) return;
+
+      const players = Object.entries(db["Career Total Stats"]).sort((a, b) => b[1].Runs - a[1].Runs);
+      
+      container.innerHTML = players.map(([name, stats], i) => {
+        const rankColor = i === 0 ? 'text-yellow-400' : i === 1 ? 'text-gray-300' : i === 2 ? 'text-amber-600' : 'text-gray-500';
+        return `
+          <div onclick="openModal('${name}')" class="glass-card p-4 rounded-xl flex items-center justify-between cursor-pointer hover:border-gray-600 transition">
+            <div class="flex items-center space-x-3">
+              <span class="font-bold text-lg w-6 ${rankColor}">#${i + 1}</span>
+              <div>
+                <h3 class="font-semibold text-white">${name}</h3>
+                <p class="text-xs text-gray-400">${stats.Matches} Matches</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-xl font-bold text-blue-400">${stats.Runs}</span>
+              <span class="text-xs text-gray-400 block">Career Runs</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderTournaments() {
+      const container = document.getElementById('view-tournaments');
+      if (!db) return;
+
+      const tournaments = ['Class Cup', 'Champions Trophy', 'Elite Qualifier'];
+      container.innerHTML = tournaments.map(tourney => {
+        if (!db[tourney]) return '';
+        const stats = db[tourney];
+        return `
+          <div class="glass-card p-5 rounded-2xl border border-gray-800">
+            <h2 class="text-lg font-bold text-blue-400 mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-trophy text-yellow-500"></i> ${tourney}
+            </h2>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="bg-gray-800/50 p-3 rounded-lg"><span class="text-gray-400 block text-xs">Total Matches</span><strong class="text-lg">${stats.Matches || '-'}</strong></div>
+              <div class="bg-gray-800/50 p-3 rounded-lg"><span class="text-gray-400 block text-xs">Winner</span><strong class="text-lg text-yellow-400">${stats.Winner || '-'}</strong></div>
+              <div class="bg-gray-800/50 p-3 rounded-lg"><span class="text-gray-400 block text-xs">Most Runs</span><strong class="text-lg">${stats["Most Runs"] || '-'}</strong></div>
+              <div class="bg-gray-800/50 p-3 rounded-lg"><span class="text-gray-400 block text-xs">Most 50s/100s</span><strong class="text-lg">${stats["Most 50s"] || stats["Most 100s"] || '-'}</strong></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderRecords() {
+      const container = document.getElementById('view-records');
+      if (!db || !db.Records) return;
+
+      container.innerHTML = Object.entries(db.Records).map(([record, holder]) => `
+        <div class="glass-card p-4 rounded-xl flex justify-between items-center border border-gray-800">
+          <span class="text-sm font-medium text-gray-300">${record}</span>
+          <span class="text-sm font-bold text-yellow-400">${holder}</span>
+        </div>
+      `).join('');
+    }
+
+    function openModal(playerName) {
+      const p = db["Career Total Stats"][playerName];
+      if (!p) return;
+
+      document.getElementById('modal-content').innerHTML = `
+        <h2 class="text-xl font-bold text-white mb-1">${playerName}</h2>
+        <p class="text-xs text-blue-400 mb-4">Player Profile</p>
+        <div class="grid grid-cols-2 gap-3 text-center">
+          <div class="bg-gray-800/60 p-3 rounded-xl"><span class="text-xs text-gray-400 block">Matches</span><span class="text-lg font-bold">${p.Matches}</span></div>
+          <div class="bg-gray-800/60 p-3 rounded-xl"><span class="text-xs text-gray-400 block">Total Runs</span><span class="text-lg font-bold text-blue-400">${p.Runs}</span></div>
+          <div class="bg-gray-800/60 p-3 rounded-xl"><span class="text-xs text-gray-400 block">50s / 100s</span><span class="text-lg font-bold text-yellow-400">${p["50s"] || 0} / ${p["100s"] || 0}</span></div>
+          <div class="bg-gray-800/60 p-3 rounded-xl"><span class="text-xs text-gray-400 block">Ducks</span><span class="text-lg font-bold text-red-400">${p.Ducks || 0}</span></div>
+        </div>
+      `;
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    // Initialize on page load
+    fetchData();
+  </script>
+</body>
+</html>
