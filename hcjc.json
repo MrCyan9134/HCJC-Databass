@@ -795,127 +795,60 @@
         },
         "Abhronil": {
           "matches": 8,
-          "runs": 120,
-          "fifties": 0,
-          "hundreds": 0,
-          "ducks": 1
-        },
-        "Piyush": {
-          "matches": 4,
-          "runs": 102,
-          "fifties": 1,
-          "hundreds": 0,
-          "ducks": 0
-        }
-      },
-      "records": {
-        "mostRunsSingleEdition": {
-          "player": "Shreyan",
-          "runs": 800,
-          "edition": "2nd Champions Trophy"
-        },
-        "mostFiftiesSingleEdition": [
-          {
-            "player": "Tirthadeep",
-            "count": 3,
-            "edition": "1st Champions Trophy"
-          },
-          {
-            "player": "Saurav",
-            "count": 3,
-            "edition": "2nd Champions Trophy"
-          },
-          {
-            "player": "Shreyan",
-            "count": 3,
-            "edition": "2nd Champions Trophy"
-          }
-        ],
-        "mostHundredsSingleEdition": {
-          "player": "Shreyan",
-          "count": 3,
-          "edition": "2nd Champions Trophy"
-        },
-        "mostDucksSingleEdition": {
-          "player": "Saptadeep",
-          "count": 4,
-          "edition": "1st Champions Trophy"
-        },
-        "highestScoresTop5": [
-          {
-            "player": "Saptadeep",
-            "score": 216,
-            "opponent": "Abhronil",
-            "edition": "1st Champions Trophy"
-          },
-          {
-            "player": "Subhrojit",
-            "score": 192,
-            "opponent": "Piyush",
-            "edition": "1st Champions Trophy"
-          },
-          {
-            "player": "Saurav",
-            "score": 157,
-            "opponent": "Ashin",
-            "edition": "2nd Champions Trophy"
-          },
-          {
-            "player": "Hrishikesh",
-            "score": 149,
-            "opponent": "Deepraj",
-            "edition": "2nd Champions Trophy"
-          },
-          {
-            "player": "Ashin",
-            "score": 139,
-            "opponent": "Saptadeep",
-            "edition": "2nd Champions Trophy"
-          }
-        ]
-      },
-      "championshipHistory": [
-        {
-          "edition": 1,
-          "winner": [
-            "Shreyan"
-          ],
-          "winnerTitleNumber": [
-            "1st"
-          ],
-          "runnerUp": [
-            "Sayantan"
-          ]
-        },
-        {
-          "edition": 2,
-          "winner": [
-            "Saurav"
-          ],
-          "winnerTitleNumber": [
-            "1st"
-          ],
-          "runnerUp": [
-            "Hrishikesh"
-          ]
-        }
-      ],
-      "pointsTable": [],
-      "mostRunsTop5": [],
-      "mostFiftiesTop5": [],
-      "mostHundredsTop5": [],
-      "highestScoresTop5": [],
-      "mostDucksTop5": []
+{
+  "playerStats": [
+    {
+      "name": "Shreyan",
+      "matches": 15,
+      "runs": 800,
+      "fifties": 4,
+      "hundreds": 2,
+      "ducks": 0,
+      "highestScore": 124
     },
-    "Elite Qualifier": {
-      "pointsTable": [],
-      "mostRunsTop5": [],
-      "mostFiftiesTop5": [],
-      "mostHundredsTop5": [],
-      "highestScoresTop5": [],
-      "mostDucksTop5": [],
-      "records": {},
-      "championshipHistory": []
+    {
+      "name": "Ayush M",
+      "matches": 12,
+      "runs": 650,
+      "fifties": 3,
+      "hundreds": 1,
+      "ducks": 1,
+      "highestScore": 105
     }
+  ],
+  "classCup": {
+    "overallStats": [],
+    "pointsTable": [],
+    "history": [
+      {
+        "edition": "1st Class Cup",
+        "winner": "Shreyan",
+        "winnerTitleNumber": "1st title",
+        "runnerUp": "Ayush M"
+      }
+    ]
+  },
+  "championsTrophy": {
+    "overallStats": [],
+    "pointsTable": [],
+    "history": [
+      {
+        "edition": "1st CT",
+        "winner": "Shreyan",
+        "winnerTitleNumber": "1st title",
+        "runnerUp": "Sayantan"
+      },
+      {
+        "edition": "2nd CT",
+        "winner": "Saurav",
+        "winnerTitleNumber": "1st title",
+        "runnerUp": "Hrishikesh"
+      }
+    ]
+  },
+  "eliteQualifier": {
+    "overallStats": [],
+    "pointsTable": [],
+    "history": []
   }
 }
