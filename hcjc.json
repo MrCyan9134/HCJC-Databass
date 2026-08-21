@@ -1,0 +1,921 @@
+{
+  "metadata": {
+    "name": "HCJC Database",
+    "coverage": "HCJC tournaments since April 2026",
+    "lastUpdated": "2026-08-21",
+    "abbreviations": {
+      "CC": "Class Cup",
+      "CT": "Champions Trophy",
+      "EQ": "Elite Qualifier"
+    },
+    "aliases": {
+      "Ayush M": "Ayush Mazumder",
+      "Ayush D": "Ayush Dey",
+      "Ankit T": "Ankit Talukdar"
+    }
+  },
+  "players": [
+    {
+      "name": "Shreyan",
+      "matches": 78,
+      "runs": 3372,
+      "fifties": 13,
+      "hundreds": 9,
+      "ducks": 4
+    },
+    {
+      "name": "Hrishikesh",
+      "matches": 73,
+      "runs": 3346,
+      "fifties": 13,
+      "hundreds": 12,
+      "ducks": 7
+    },
+    {
+      "name": "Saptadeep",
+      "matches": 69,
+      "runs": 2486,
+      "fifties": 11,
+      "hundreds": 6,
+      "ducks": 7
+    },
+    {
+      "name": "Sresthangshu",
+      "matches": 72,
+      "runs": 2402,
+      "fifties": 6,
+      "hundreds": 5,
+      "ducks": 5
+    },
+    {
+      "name": "Sayantan",
+      "matches": 52,
+      "runs": 1602,
+      "fifties": 1,
+      "hundreds": 4,
+      "ducks": 2
+    },
+    {
+      "name": "Subhrojit",
+      "matches": 31,
+      "runs": 1414,
+      "fifties": 6,
+      "hundreds": 4,
+      "ducks": 1
+    },
+    {
+      "name": "Rudraneel",
+      "matches": 45,
+      "runs": 1339,
+      "fifties": 8,
+      "hundreds": 1,
+      "ducks": 7
+    },
+    {
+      "name": "Saurav",
+      "matches": 49,
+      "runs": 1214,
+      "fifties": 4,
+      "hundreds": 2,
+      "ducks": 5
+    },
+    {
+      "name": "Ankit Talukdar",
+      "matches": 54,
+      "runs": 1118,
+      "fifties": 2,
+      "hundreds": 0,
+      "ducks": 5
+    },
+    {
+      "name": "Lanthoiba",
+      "matches": 37,
+      "runs": 976,
+      "fifties": 0,
+      "hundreds": 2,
+      "ducks": 1
+    },
+    {
+      "name": "Deepraj",
+      "matches": 51,
+      "runs": 975,
+      "fifties": 0,
+      "hundreds": 0,
+      "ducks": 6
+    },
+    {
+      "name": "Ashin",
+      "matches": 37,
+      "runs": 948,
+      "fifties": 1,
+      "hundreds": 2,
+      "ducks": 3
+    },
+    {
+      "name": "Tirthadeep",
+      "matches": 39,
+      "runs": 912,
+      "fifties": 3,
+      "hundreds": 1,
+      "ducks": 6
+    },
+    {
+      "name": "Ayush Mazumder",
+      "matches": 37,
+      "runs": 863,
+      "fifties": 4,
+      "hundreds": 0,
+      "ducks": 0
+    },
+    {
+      "name": "Bodhisattya",
+      "matches": 39,
+      "runs": 849,
+      "fifties": 2,
+      "hundreds": 0,
+      "ducks": 4
+    },
+    {
+      "name": "Abhronil",
+      "matches": 34,
+      "runs": 618,
+      "fifties": 0,
+      "hundreds": 0,
+      "ducks": 4
+    },
+    {
+      "name": "Piyush",
+      "matches": 26,
+      "runs": 604,
+      "fifties": 2,
+      "hundreds": 0,
+      "ducks": 0
+    },
+    {
+      "name": "Demojit",
+      "matches": 20,
+      "runs": 562,
+      "fifties": 1,
+      "hundreds": 0,
+      "ducks": 1
+    },
+    {
+      "name": "Avanish",
+      "matches": 22,
+      "runs": 543,
+      "fifties": 0,
+      "hundreds": 1,
+      "ducks": 1
+    },
+    {
+      "name": "Ayush Dey",
+      "matches": 17,
+      "runs": 391,
+      "fifties": 0,
+      "hundreds": 0,
+      "ducks": 1
+    },
+    {
+      "name": "Biswarup",
+      "matches": 15,
+      "runs": 339,
+      "fifties": 0,
+      "hundreds": 0,
+      "ducks": 2
+    },
+    {
+      "name": "Nirmalya",
+      "matches": 5,
+      "runs": 85,
+      "fifties": 0,
+      "hundreds": 0,
+      "ducks": 2
+    }
+  ],
+  "overall_records": {
+    "highestScoresTop5": [
+      {
+        "player": "Hrishikesh",
+        "score": 230,
+        "opponent": "Ayush Mazumder",
+        "tournament": "34th Class Cup"
+      },
+      {
+        "player": "Sresthangshu",
+        "score": 220,
+        "opponent": "Subhrojit",
+        "tournament": "1st Elite Qualifier"
+      },
+      {
+        "player": "Saptadeep",
+        "score": 216,
+        "opponent": "Abhronil",
+        "tournament": "1st Champions Trophy"
+      },
+      {
+        "player": "Subhrojit",
+        "score": 192,
+        "opponent": "Piyush",
+        "tournament": "1st Champions Trophy"
+      },
+      {
+        "player": "Avanish",
+        "score": 177,
+        "opponent": "Saptadeep",
+        "tournament": "1st Elite Qualifier"
+      }
+    ]
+  },
+  "tournaments": {
+    "Class Cup": {
+      "records": {
+        "mostRunsSingleEdition": {
+          "player": "Shreyan",
+          "runs": 1365,
+          "edition": "26th Class Cup"
+        },
+        "mostFiftiesSingleEdition": [
+          {
+            "player": "Shreyan",
+            "count": 7,
+            "edition": "33rd Class Cup"
+          },
+          {
+            "player": "Rudraneel",
+            "count": 7,
+            "edition": "33rd Class Cup"
+          }
+        ],
+        "mostHundredsSingleEdition": {
+          "player": "Shreyan",
+          "count": 7,
+          "edition": "26th Class Cup"
+        },
+        "mostDucksSingleEdition": {
+          "player": "Saurav",
+          "count": 6,
+          "edition": "26th Class Cup"
+        },
+        "highestScoresTop5": [
+          {
+            "player": "Saurav",
+            "score": 345,
+            "opponent": "Prajit",
+            "edition": "5th Class Cup"
+          },
+          {
+            "player": "Shreyan",
+            "score": 303,
+            "opponent": "Saurav",
+            "edition": "28th Class Cup"
+          },
+          {
+            "player": "Hrishikesh",
+            "score": 249,
+            "opponent": "Saptadeep",
+            "edition": "28th Class Cup"
+          },
+          {
+            "player": "Shreyan",
+            "score": 236,
+            "opponent": "Demojit",
+            "edition": "18th Class Cup"
+          },
+          {
+            "player": "Hrishikesh",
+            "score": 230,
+            "opponent": "Ayush Mazumder",
+            "edition": "34th Class Cup"
+          }
+        ]
+      },
+      "championshipHistory": [
+        {
+          "edition": 1,
+          "winner": [
+            "Shreyan"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Ayush Dey"
+          ]
+        },
+        {
+          "edition": 2,
+          "winner": [
+            "Abhronil"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Ayush Dey"
+          ]
+        },
+        {
+          "edition": 3,
+          "winner": [
+            "Saptadeep"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 4,
+          "winner": [
+            "Ankit Talukdar"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 5,
+          "winner": [
+            "Ankit Talukdar"
+          ],
+          "winnerTitleNumber": [
+            "2nd"
+          ],
+          "runnerUp": [
+            "Abhronil"
+          ]
+        },
+        {
+          "edition": 6,
+          "winner": [
+            "Saurav"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Saptadeep"
+          ]
+        },
+        {
+          "edition": 7,
+          "winner": [
+            "Saurav"
+          ],
+          "winnerTitleNumber": [
+            "2nd"
+          ],
+          "runnerUp": [
+            "Saptadeep"
+          ]
+        },
+        {
+          "edition": 8,
+          "winner": [
+            "Saurav",
+            "Shreyan"
+          ],
+          "winnerTitleNumber": [
+            "3rd",
+            "2nd"
+          ],
+          "runnerUp": []
+        },
+        {
+          "edition": 9,
+          "winner": [
+            "Avanish"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Yamin"
+          ]
+        },
+        {
+          "edition": 10,
+          "winner": [
+            "Ayush Dey"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Saurav"
+          ]
+        },
+        {
+          "edition": 11,
+          "winner": [
+            "Bodhisattya"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 12,
+          "winner": [
+            "Shreyan"
+          ],
+          "winnerTitleNumber": [
+            "3rd"
+          ],
+          "runnerUp": [
+            "Saurav"
+          ]
+        },
+        {
+          "edition": 13,
+          "winner": [
+            "Ayush Dey"
+          ],
+          "winnerTitleNumber": [
+            "2nd"
+          ],
+          "runnerUp": [
+            "Saurav"
+          ]
+        },
+        {
+          "edition": 14,
+          "winner": [
+            "Saptadeep"
+          ],
+          "winnerTitleNumber": [
+            "2nd"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 15,
+          "winner": [
+            "Ayush Dey"
+          ],
+          "winnerTitleNumber": [
+            "3rd"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 16,
+          "winner": [
+            "Shreyan"
+          ],
+          "winnerTitleNumber": [
+            "4th"
+          ],
+          "runnerUp": [
+            "Hrishikesh"
+          ]
+        },
+        {
+          "edition": 17,
+          "winner": [
+            "Biswarup"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Ayush Dey"
+          ]
+        },
+        {
+          "edition": 18,
+          "winner": [
+            "Piyush"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Saurav"
+          ]
+        },
+        {
+          "edition": 19,
+          "winner": [
+            "Saurav"
+          ],
+          "winnerTitleNumber": [
+            "4th"
+          ],
+          "runnerUp": [
+            "Hrishikesh"
+          ]
+        },
+        {
+          "edition": 20,
+          "winner": [
+            "Saptadeep"
+          ],
+          "winnerTitleNumber": [
+            "3rd"
+          ],
+          "runnerUp": [
+            "Saurav"
+          ]
+        },
+        {
+          "edition": 21,
+          "winner": [
+            "Hrishikesh"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 22,
+          "winner": [
+            "Saurav"
+          ],
+          "winnerTitleNumber": [
+            "5th"
+          ],
+          "runnerUp": [
+            "Hrishikesh"
+          ]
+        },
+        {
+          "edition": 23,
+          "winner": [
+            "Avanish"
+          ],
+          "winnerTitleNumber": [
+            "2nd"
+          ],
+          "runnerUp": [
+            "Saptadeep"
+          ]
+        },
+        {
+          "edition": 24,
+          "winner": [
+            "Hrishikesh"
+          ],
+          "winnerTitleNumber": [
+            "2nd"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 25,
+          "winner": [
+            "Hrishikesh"
+          ],
+          "winnerTitleNumber": [
+            "3rd"
+          ],
+          "runnerUp": [
+            "Subhrojit"
+          ]
+        },
+        {
+          "edition": 26,
+          "winner": [
+            "Saptadeep"
+          ],
+          "winnerTitleNumber": [
+            "4th"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 27,
+          "winner": [
+            "Saptadeep"
+          ],
+          "winnerTitleNumber": [
+            "5th"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 28,
+          "winner": [
+            "Subhrojit"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Piyush"
+          ]
+        },
+        {
+          "edition": 29,
+          "winner": [
+            "Saptadeep"
+          ],
+          "winnerTitleNumber": [
+            "6th"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 30,
+          "winner": [
+            "Shreyan"
+          ],
+          "winnerTitleNumber": [
+            "5th"
+          ],
+          "runnerUp": [
+            "Hrishikesh"
+          ]
+        },
+        {
+          "edition": 31,
+          "winner": [
+            "Hrishikesh"
+          ],
+          "winnerTitleNumber": [
+            "4th"
+          ],
+          "runnerUp": [
+            "Shreyan"
+          ]
+        },
+        {
+          "edition": 32,
+          "winner": [
+            "Biswarup"
+          ],
+          "winnerTitleNumber": [
+            "2nd"
+          ],
+          "runnerUp": [
+            "Saurav"
+          ]
+        },
+        {
+          "edition": 33,
+          "winner": [
+            "Hrishikesh"
+          ],
+          "winnerTitleNumber": [
+            "5th"
+          ],
+          "runnerUp": [
+            "Rudraneel"
+          ]
+        },
+        {
+          "edition": 34,
+          "winner": [
+            "Saptadeep"
+          ],
+          "winnerTitleNumber": [
+            "7th"
+          ],
+          "runnerUp": [
+            "Hrishikesh"
+          ]
+        }
+      ],
+      "pointsTable": [],
+      "mostRunsTop5": [],
+      "mostFiftiesTop5": [],
+      "mostHundredsTop5": [],
+      "highestScoresTop5": [],
+      "mostDucksTop5": []
+    },
+    "Champions Trophy": {
+      "status": "Scrapped from 17 July 2026 onwards",
+      "careerStats": {
+        "Shreyan": {
+          "matches": 34,
+          "runs": 1505,
+          "fifties": 5,
+          "hundreds": 5,
+          "ducks": 2
+        },
+        "Hrishikesh": {
+          "matches": 25,
+          "runs": 1227,
+          "fifties": 3,
+          "hundreds": 3,
+          "ducks": 3
+        },
+        "Saptadeep": {
+          "matches": 21,
+          "runs": 921,
+          "fifties": 4,
+          "hundreds": 1,
+          "ducks": 5
+        },
+        "Sresthangshu": {
+          "matches": 28,
+          "runs": 655,
+          "fifties": 1,
+          "hundreds": 1,
+          "ducks": 3
+        },
+        "Sayantan": {
+          "matches": 17,
+          "runs": 578,
+          "fifties": 1,
+          "hundreds": 2,
+          "ducks": 0
+        },
+        "Saurav": {
+          "matches": 17,
+          "runs": 572,
+          "fifties": 3,
+          "hundreds": 2,
+          "ducks": 0
+        },
+        "Subhrojit": {
+          "matches": 6,
+          "runs": 491,
+          "fifties": 1,
+          "hundreds": 2,
+          "ducks": 0
+        },
+        "Tirthadeep": {
+          "matches": 17,
+          "runs": 409,
+          "fifties": 3,
+          "hundreds": 0,
+          "ducks": 2
+        },
+        "Ankit Talukdar": {
+          "matches": 17,
+          "runs": 368,
+          "fifties": 1,
+          "hundreds": 0,
+          "ducks": 2
+        },
+        "Ashin": {
+          "matches": 14,
+          "runs": 339,
+          "fifties": 0,
+          "hundreds": 1,
+          "ducks": 1
+        },
+        "Deepraj": {
+          "matches": 14,
+          "runs": 242,
+          "fifties": 0,
+          "hundreds": 0,
+          "ducks": 3
+        },
+        "Rudraneel": {
+          "matches": 8,
+          "runs": 206,
+          "fifties": 1,
+          "hundreds": 0,
+          "ducks": 2
+        },
+        "Abhronil": {
+          "matches": 8,
+          "runs": 120,
+          "fifties": 0,
+          "hundreds": 0,
+          "ducks": 1
+        },
+        "Piyush": {
+          "matches": 4,
+          "runs": 102,
+          "fifties": 1,
+          "hundreds": 0,
+          "ducks": 0
+        }
+      },
+      "records": {
+        "mostRunsSingleEdition": {
+          "player": "Shreyan",
+          "runs": 800,
+          "edition": "2nd Champions Trophy"
+        },
+        "mostFiftiesSingleEdition": [
+          {
+            "player": "Tirthadeep",
+            "count": 3,
+            "edition": "1st Champions Trophy"
+          },
+          {
+            "player": "Saurav",
+            "count": 3,
+            "edition": "2nd Champions Trophy"
+          },
+          {
+            "player": "Shreyan",
+            "count": 3,
+            "edition": "2nd Champions Trophy"
+          }
+        ],
+        "mostHundredsSingleEdition": {
+          "player": "Shreyan",
+          "count": 3,
+          "edition": "2nd Champions Trophy"
+        },
+        "mostDucksSingleEdition": {
+          "player": "Saptadeep",
+          "count": 4,
+          "edition": "1st Champions Trophy"
+        },
+        "highestScoresTop5": [
+          {
+            "player": "Saptadeep",
+            "score": 216,
+            "opponent": "Abhronil",
+            "edition": "1st Champions Trophy"
+          },
+          {
+            "player": "Subhrojit",
+            "score": 192,
+            "opponent": "Piyush",
+            "edition": "1st Champions Trophy"
+          },
+          {
+            "player": "Saurav",
+            "score": 157,
+            "opponent": "Ashin",
+            "edition": "2nd Champions Trophy"
+          },
+          {
+            "player": "Hrishikesh",
+            "score": 149,
+            "opponent": "Deepraj",
+            "edition": "2nd Champions Trophy"
+          },
+          {
+            "player": "Ashin",
+            "score": 139,
+            "opponent": "Saptadeep",
+            "edition": "2nd Champions Trophy"
+          }
+        ]
+      },
+      "championshipHistory": [
+        {
+          "edition": 1,
+          "winner": [
+            "Shreyan"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Sayantan"
+          ]
+        },
+        {
+          "edition": 2,
+          "winner": [
+            "Saurav"
+          ],
+          "winnerTitleNumber": [
+            "1st"
+          ],
+          "runnerUp": [
+            "Hrishikesh"
+          ]
+        }
+      ],
+      "pointsTable": [],
+      "mostRunsTop5": [],
+      "mostFiftiesTop5": [],
+      "mostHundredsTop5": [],
+      "highestScoresTop5": [],
+      "mostDucksTop5": []
+    },
+    "Elite Qualifier": {
+      "pointsTable": [],
+      "mostRunsTop5": [],
+      "mostFiftiesTop5": [],
+      "mostHundredsTop5": [],
+      "highestScoresTop5": [],
+      "mostDucksTop5": [],
+      "records": {},
+      "championshipHistory": []
+    }
+  }
+}
